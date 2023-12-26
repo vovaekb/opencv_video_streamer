@@ -8,9 +8,11 @@
 #include <iostream>
 #include <vector>
 #include <boost/thread/thread.hpp>
+
 using boost::asio::ip::tcp;
 using namespace std;
 using namespace cv;
+
 Mat img = Mat::zeros(320, 240, CV_8UC3);
 bool flag = false; /* if flag is false ,the thread is not ready to show the mat frame */
 
@@ -43,10 +45,10 @@ int main()
             cout << "get data length :" << len << endl;            /* disp the data size recieved */
             std::vector<uchar> vectordata(buf.begin(), buf.end()); /* change the recieved mat frame(1*230400) to vector */
             cv::Mat data_mat(vectordata, true);
-            // cout<<"cols:"<<data_mat.cols<<endl;
-            // cout<<"rows:"<<data_mat.rows<<endl;
-            // cout<<"total:"<<data_mat.total()<<endl;
-            // cout<<"elemSize:"<<data_mat.elemSize()<<endl;
+            // cout << "cols:" << data_mat.cols << endl;
+            // cout << "rows:" << data_mat.rows << endl;
+            // cout << "total:" << data_mat.total() << endl;
+            // cout << "elemSize:" << data_mat.elemSize() << endl;
             img = data_mat.reshape(3, 240); /* reshape to 3 channel and 240 rows */
             cout << "reshape over" << endl;
             flag = true;
