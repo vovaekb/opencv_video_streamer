@@ -23,13 +23,13 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
   )
 
-add_executable(video_server  server.cpp)
+add_executable(video_server src/server.cpp)
 target_link_libraries(video_server
     ${OpenCV_LIBS}
     boost_thread boost_system boost_regex
 )
 
-add_executable(video_client  client.cpp)
+add_executable(video_client src/client.cpp)
 target_link_libraries(video_client
     ${OpenCV_LIBS}
     boost_thread boost_system boost_regex
